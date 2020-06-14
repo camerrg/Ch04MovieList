@@ -1,0 +1,26 @@
+﻿@model WebApplication1Cameron.Models.PersonExactDateModel
+
+@{
+    ViewBag.Title = "First Responsive App - Calculate by specific date";
+}
+
+@using (@Html.BeginForm("CalculateByDate", "Home", FormMethod.Post))
+{
+    @Html.LabelFor(model => model.Name) @Html.TextBoxFor(m => m.Name)
+
+    <p />
+
+    @Html.LabelFor(m => m.BirthDate) @Html.TextBoxFor(m => m.BirthDate)
+
+    <p />
+
+    <span>@Model.AgeThisYear()</span>
+
+    <p />
+
+    <input type="submit" value="Submit" />
+}
+
+<p />
+
+@Html.ActionLink("Calculate By Year", "Index", "Home")
