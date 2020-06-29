@@ -1,0 +1,43 @@
+﻿@model List<Olympics.Models.CountryModel>
+
+@{
+    ViewBag.Title = "Countries";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <hr />
+        <h3>Filter by Game:</h3>
+       <h4> @Html.ActionLink("Winter Olympics", "Index", new { Value = "Winter Olympics", Filter = "Game" })</h4>
+       <h4> @Html.ActionLink("Summer Olympics", "Index", new { Value = "Summer Olympics", Filter = "Game" })</h4>
+       <h4> @Html.ActionLink("Paralympics", "Index", new { Value = "Paralympics", Filter = "Game" })</h4>
+       <h4> @Html.ActionLink("Youth Olympics", "Index", new { Value = "Youth Olympics", Filter = "Game" })</h4>
+
+        <hr />
+        <h3>Filter by Category:</h3>
+        <h4>@Html.ActionLink("Curling", "Index", new { Value = "Curling", Filter = "Category" })</h4>
+        <h4> @Html.ActionLink("Bobsleigh", "Index", new { Value = "Bobsleigh", Filter = "Category" })</h4>
+        <h4>@Html.ActionLink("Diving", "Index", new { Value = "Diving", Filter = "Category" })</h4>
+        <h4>@Html.ActionLink("Road Cycling", "Index", new { Value = "Road Cycling", Filter = "Category" })</h4>
+        <h4> @Html.ActionLink("Archery", "Index", new { Value = "Archery", Filter = "Category" })</h4>
+        <h4> @Html.ActionLink("Canoe Sprint", "Index", new { Value = "Canoe Sprint", Filter = "Category" })</h4>
+        <h4> @Html.ActionLink("Breakdancing", "Index", new { Value = "Breakdancing", Filter = "Category" })</h4>
+        <h4>@Html.ActionLink("Skateboarding", "Index", new { Value = "Skateboarding", Filter = "Category" })</h4>
+        <hr />
+
+        @Html.ActionLink("All", "Index")
+    </div>
+    <div class="col-md-8">
+        <div class="col-md-12 text-center">
+            @{ foreach (Olympics.Models.CountryModel country in Model)
+                {
+
+            <a href="/home/country/@country.Id" title="@country.Country, @country.Game, @country.Type">
+                <img src="@country.Flag" style="width:400px;border:1px solid;margin-bottom:10px;"  />
+            </a>
+
+                }
+            }
+        </div>
+    </div>
+</div>

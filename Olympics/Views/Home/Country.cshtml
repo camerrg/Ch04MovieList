@@ -1,0 +1,58 @@
+﻿@model Olympics.Models.DisplayModel
+
+@{
+    ViewBag.Title = "Country";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        @{ foreach (Olympics.Models.CountryModel country in Model.Countries)
+            {
+
+                <a href="/home/country/@country.Id" title="@country.Country, @country.Game, @country.Type">
+                    <img src="@country.Flag" style="width:150px;border:1px solid;margin-bottom:10px;" />
+                </a>
+
+            }
+        }
+    </div>
+    <div class="col-md-8">
+        <h2>@Model.SelectedCountry.Country</h2>
+
+        <img src="@Model.SelectedCountry.Flag" style="border: 1px solid;width:300px;margin-bottom:30px;" />
+
+        <dl class="dl-horizontal">
+            <dt style="margin-bottom:10px;">
+                @Html.DisplayNameFor(model => model.SelectedCountry.Game)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SelectedCountry.Game)
+            </dd>
+
+            <dt style="margin-bottom:10px;">
+                @Html.DisplayNameFor(model => model.SelectedCountry.Sport)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SelectedCountry.Sport)
+            </dd>
+
+            <dt style="margin-bottom:10px;">
+                @Html.DisplayNameFor(model => model.SelectedCountry.Type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SelectedCountry.Type)
+            </dd>
+
+        </dl>
+    </div>    
+</div>
+<p>
+    @*@Html.ActionLink("Back", "Index")*@
+
+    <button class="btn btn-success" onclick="window.history.back();">Back</button>
+</p>
