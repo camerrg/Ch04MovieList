@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-
 
 namespace TicketingSystem.Migrations
 {
-    public partial class Initial : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -41,12 +36,12 @@ namespace TicketingSystem.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
                     SprintId = table.Column<string>(nullable: false),
-                    StatusId = table.Column<string>(nullable: true)
+                    StatusId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -62,7 +57,7 @@ namespace TicketingSystem.Migrations
                         column: x => x.StatusId,
                         principalTable: "Statuses",
                         principalColumn: "StatusId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -73,8 +68,7 @@ namespace TicketingSystem.Migrations
                     { "1a", "1A" },
                     { "2a", "2A" },
                     { "3a", "3A" },
-                   { "4a", "4A" },
-
+                    { "4a", "4A" }
                 });
 
             migrationBuilder.InsertData(
@@ -83,7 +77,7 @@ namespace TicketingSystem.Migrations
                 values: new object[,]
                 {
                     { "to do", "To Do" },
-                    { "in progress", "In Progress" },
+                    { "in progress", "In progress" },
                     { "quality assurance", "Quality Assurance" },
                     { "done", "Done" }
                 });

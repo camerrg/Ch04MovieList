@@ -47,6 +47,7 @@
                 {
                     string overdue = Overdue(task);
                     <tr>
+                        <td>@task.Name</td>
                         <td>@task.Description</td>
                         <td>@task.Sprint.Name</td>
                         <td class="@overdue">@task.DueDate?.ToShortDateString()</td>
